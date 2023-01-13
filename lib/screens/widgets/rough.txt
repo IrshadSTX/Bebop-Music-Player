@@ -1,0 +1,196 @@
+ TextButton(
+                onPressed: () {},
+                child: Container(
+                  height: 80,
+                  width: 600,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2,
+                      color: Color.fromARGB(255, 81, 21, 88),
+                    ),
+                  ),
+                  child: ListTile(
+                    leading: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 3,
+                          color: Color.fromARGB(255, 28, 13, 86),
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Image(
+                        image: AssetImage('assets/images/headset.png'),
+                      ),
+                    ),
+                    title: Text(
+                      'Music is life',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
+                    subtitle: Text(
+                      'Jimmy Carter',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                    ),
+                    trailing: TextButton(
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.more_vert,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Container(
+                  height: 80,
+                  width: 600,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2,
+                      color: Color.fromARGB(255, 81, 21, 88),
+                    ),
+                  ),
+                  child: ListTile(
+                    leading: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 3,
+                          color: Color.fromARGB(255, 28, 13, 86),
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Image(
+                        image: AssetImage('assets/images/nirvana.jpg'),
+                      ),
+                    ),
+                    title: Text(
+                      'Smell Like teen spirit',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
+                    subtitle: Text(
+                      'Nirvana',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                    ),
+                    trailing: TextButton(
+                      onPressed: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: ((context) => MoreSelect()),
+                        //   ),
+                        // );
+                        MoreSelect();
+                      },
+                      child: Icon(
+                        Icons.more_vert,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Container(
+                  height: 80,
+                  width: 600,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2,
+                      color: Color.fromARGB(255, 81, 21, 88),
+                    ),
+                  ),
+                  child: ListTile(
+                    leading: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 3,
+                          color: Color.fromARGB(255, 28, 13, 86),
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Image(
+                        image: AssetImage('assets/images/micheal.jpeg'),
+                      ),
+                    ),
+                    title: Text(
+                      'Billie Jean',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
+                    subtitle: Text(
+                      'Michael Jackson',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                    ),
+                    trailing: TextButton(
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.more_vert,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Container(
+                  height: 80,
+                  width: 600,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2,
+                      color: Color.fromARGB(255, 81, 21, 88),
+                    ),
+                  ),
+                  child: ListTile(
+                    leading: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 3,
+                          color: Color.fromARGB(255, 28, 13, 86),
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Image(
+                        image: AssetImage('assets/images/bobdylan.jpeg'),
+                      ),
+                    ),
+                    title: Text(
+                      'Smell Like teen spirit',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
+                    subtitle: Text(
+                      'Nirvana',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                    ),
+                    trailing: TextButton(
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.more_vert,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
