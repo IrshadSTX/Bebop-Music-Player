@@ -1,3 +1,4 @@
+import 'package:bebop_music/db/model/bebop_model.dart';
 import 'package:bebop_music/screens/HomeScreen/Playlist/playlist_add_songs.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -6,9 +7,9 @@ import 'package:provider/provider.dart';
 
 import '../../../controller/getRecent_Controller.dart';
 import '../../../controller/get_all_song.dart';
-import '../../../model/bebop_model.dart';
+
 import '../../MusicPlayer/musicplayer.dart';
-import '../../provider/provider.dart';
+import '../../../controller/provider/provider.dart';
 
 class PlaylistSingle extends StatefulWidget {
   final BebopModel playlist;

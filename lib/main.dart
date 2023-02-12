@@ -1,31 +1,40 @@
-import 'package:bebop_music/model/bebop_model.dart';
-import 'package:bebop_music/screens/provider/provider.dart';
+import 'package:bebop_music/controller/provider/all_song_provider.dart';
+import 'package:bebop_music/db/model/bebop_model.dart';
+import 'package:bebop_music/controller/provider/provider.dart';
 import 'package:bebop_music/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
   if (!Hive.isAdapterRegistered(BebopModelAdapter().typeId)) {
     Hive.registerAdapter(BebopModelAdapter());
   }
 
-  await Hive.initFlutter();
   await Hive.openBox('recentSongNotifier');
   await Hive.openBox<int>('FavoriteDB');
   await Hive.openBox('topBeatsNotifier');
   await Hive.openBox<BebopModel>('playlistDb');
 
   await JustAudioBackground.init(
-    androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
-    androidNotificationChannelName: 'Audio playback',
-    androidNotificationOngoing: true,
-  );
+      androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
+      androidNotificationChannelName: 'Audio playback',
+      androidNotificationOngoing: true,
+      preloadArtwork: true);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => SongModelProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => SongModelProvider()),
+        ChangeNotifierProvider(create: (context) => AllsongsProvider()),
+      ],
       child: const MyApp(),
     ),
   );

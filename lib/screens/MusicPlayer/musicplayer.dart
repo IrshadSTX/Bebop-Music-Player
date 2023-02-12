@@ -1,5 +1,6 @@
 import 'package:bebop_music/controller/get_all_song.dart';
-import 'package:bebop_music/model/bebop_model.dart';
+import 'package:bebop_music/db/model/bebop_model.dart';
+
 import 'package:bebop_music/screens/Details/settings.dart';
 import 'package:bebop_music/screens/HomeScreen/Playlist/playlistScreen.dart';
 import 'package:bebop_music/screens/HomeScreen/favorite/FavButtonPlayerScreen.dart';
@@ -74,7 +75,6 @@ class _PlayerScreenState extends State<PlayerScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        // height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -376,8 +376,8 @@ class _PlayerScreenState extends State<PlayerScreen> {
                   builder: (BuildContext context, Box<BebopModel> musicList,
                       Widget? child) {
                     return Hive.box<BebopModel>('playlistDb').isEmpty
-                        ? Center(
-                            child: const Positioned(
+                        ? const Center(
+                            child: Positioned(
                               right: 30,
                               left: 30,
                               bottom: 50,
@@ -437,7 +437,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                   child: const Text(
                     'Add to Playlist',
                     style: TextStyle(
-                        color: const Color.fromARGB(255, 51, 2, 114),
+                        color: Color.fromARGB(255, 51, 2, 114),
                         fontFamily: 'poppins'),
                   )),
               TextButton(
@@ -447,7 +447,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                   child: const Text(
                     'Cancel',
                     style: TextStyle(
-                        color: const Color.fromARGB(255, 51, 2, 114),
+                        color: Color.fromARGB(255, 51, 2, 114),
                         fontFamily: 'poppins'),
                   ))
             ],

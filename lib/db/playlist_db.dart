@@ -1,7 +1,6 @@
+import 'package:bebop_music/db/model/bebop_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive_flutter/adapters.dart';
-
-import '../model/bebop_model.dart';
 
 class PlaylistDb {
   static ValueNotifier<List<BebopModel>> playlistNotifier = ValueNotifier([]);

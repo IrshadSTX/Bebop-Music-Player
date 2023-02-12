@@ -1,10 +1,11 @@
 import 'package:bebop_music/controller/Get_Top_Beats_controller.dart';
 import 'package:bebop_music/controller/get_all_song.dart';
+import 'package:bebop_music/controller/provider/all_song_provider.dart';
 import 'package:bebop_music/screens/HomeScreen/drawer_screen.dart';
 
 import 'package:bebop_music/screens/miniPlayer.dart';
 
-import 'package:bebop_music/screens/provider/provider.dart';
+import 'package:bebop_music/controller/provider/provider.dart';
 
 import 'package:bebop_music/screens/searchScreen.dart';
 import 'package:bebop_music/screens/widgets/MenuButton.dart';
@@ -14,50 +15,37 @@ import 'dart:developer';
 import 'package:bebop_music/screens/MusicPlayer/musicplayer.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:on_audio_query/on_audio_query.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 import '../controller/getRecent_Controller.dart';
 import '../db/favourite_db.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
 List<SongModel> startSong = [];
 
-class _HomeScreenState extends State<HomeScreen> {
-  final OnAudioQuery _audioQuery = OnAudioQuery();
-  final AudioPlayer _audioPlayer = AudioPlayer();
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
+
   bool isFavourite = false;
-  List<SongModel> allSongs = [];
 
   playSong(String? uri) {
     try {
-      _audioPlayer.setAudioSource(AudioSource.uri(
-        Uri.parse(uri!),
-      ));
+      _audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(uri!)));
       _audioPlayer.play();
     } on Exception {
       log('Error parsing song');
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    requestPermission();
-  }
-
-  void requestPermission() {
-    Permission.storage.request();
-  }
+  final _audioQuery = OnAudioQuery();
+  final _audioPlayer = AudioPlayer();
+  List<SongModel> allSongs = [];
 
   @override
   Widget build(BuildContext context) {
+    log("First login");
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<AllsongsProvider>(context, listen: false).requestPermission();
+    });
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 57, 4, 97),
@@ -109,7 +97,6 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
                 const Text(
                   ' Libraries',
                   style: TextStyle(

@@ -1,4 +1,4 @@
-import 'package:bebop_music/model/bebop_model.dart';
+import 'package:bebop_music/db/model/bebop_model.dart';
 import 'package:bebop_music/screens/HomeScreen/Playlist/playlistScreen.dart';
 import 'package:bebop_music/screens/homescreen.dart';
 import 'package:flutter/material.dart';

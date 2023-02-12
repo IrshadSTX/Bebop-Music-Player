@@ -1,6 +1,6 @@
 import 'package:bebop_music/screens/MusicPlayer/musicplayer.dart';
 import 'package:bebop_music/screens/homescreen.dart';
-import 'package:bebop_music/screens/provider/provider.dart';
+import 'package:bebop_music/controller/provider/provider.dart';
 
 import 'package:bebop_music/screens/widgets/MenuButton.dart';
 import 'package:flutter/material.dart';

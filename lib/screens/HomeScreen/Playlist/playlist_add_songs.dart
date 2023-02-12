@@ -1,7 +1,8 @@
 import 'dart:developer';
 
+import 'package:bebop_music/db/model/bebop_model.dart';
 import 'package:bebop_music/db/playlist_db.dart';
-import 'package:bebop_music/model/bebop_model.dart';
+
 import 'package:bebop_music/screens/searchScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
