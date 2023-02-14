@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:bebop_music/db/model/bebop_model.dart';
 import 'package:bebop_music/db/playlist_db.dart';
 
-import 'package:bebop_music/screens/searchScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -15,13 +12,15 @@ class SongListAddPage extends StatefulWidget {
 }
 
 class _SongListPageState extends State<SongListAddPage> {
+  final OnAudioQuery audioQuery = OnAudioQuery();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 57, 4, 97),
           centerTitle: true,
-          title: Text('Add Songs'),
+          title: const Text('Add Songs'),
         ),
         backgroundColor: const Color.fromARGB(255, 20, 5, 46),
         body: SafeArea(
@@ -40,7 +39,7 @@ class _SongListPageState extends State<SongListAddPage> {
             ),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Expanded(
@@ -72,7 +71,8 @@ class _SongListPageState extends State<SongListAddPage> {
                                 );
                               }
                               return ListView.separated(
-                                separatorBuilder: (context, index) => Divider(
+                                separatorBuilder: (context, index) =>
+                                    const Divider(
                                   height: 10,
                                 ),
                                 itemBuilder: ((context, index) {
@@ -112,7 +112,8 @@ class _SongListPageState extends State<SongListAddPage> {
                                                 color: Colors.blueGrey),
                                           ),
                                           trailing: Padding(
-                                            padding: EdgeInsets.only(right: 10),
+                                            padding: const EdgeInsets.only(
+                                                right: 10),
                                             child: Wrap(children: [
                                               !widget.playlist.isValueIn(
                                                       item.data![index].id)

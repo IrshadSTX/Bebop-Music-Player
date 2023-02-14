@@ -24,7 +24,7 @@ class _TopBeatsScreenState extends State<TopBeatsScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 57, 4, 97),
-          title: Text('Top Beats'),
+          title: const Text('Top Beats'),
           centerTitle: true,
         ),
         body: Container(
@@ -58,8 +58,8 @@ class _TopBeatsScreenState extends State<TopBeatsScreen> {
                               if (value.isEmpty) {
                                 return Center(
                                   child: Column(
-                                    children: [
-                                      const Text(
+                                    children: const [
+                                      Text(
                                         'No Songs found',
                                         style: TextStyle(color: Colors.white),
                                       )
@@ -138,8 +138,9 @@ class _TopBeatsScreenState extends State<TopBeatsScreen> {
                                                       id: topBeatsList[index]
                                                           .id,
                                                       type: ArtworkType.AUDIO,
-                                                      nullArtworkWidget: Icon(Icons
-                                                          .music_note_rounded),
+                                                      nullArtworkWidget:
+                                                          const Icon(Icons
+                                                              .music_note_rounded),
                                                     ),
                                                     title: Text(
                                                       topBeatsList[index]

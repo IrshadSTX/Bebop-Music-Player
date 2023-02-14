@@ -14,7 +14,7 @@ class SettingScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 57, 4, 97),
         centerTitle: true,
-        title: Text('Settings'),
+        title: const Text('Settings'),
       ),
       body: Container(
         width: double.infinity,
@@ -40,7 +40,7 @@ class SettingScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AboutScreen(),
+                      builder: (context) => const AboutScreen(),
                     ));
               },
               child: ListSettings(
@@ -53,7 +53,7 @@ class SettingScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => TermsAndConditions(),
+                      builder: (context) => const TermsAndConditions(),
                     ));
               },
               child: ListSettings(
@@ -66,7 +66,7 @@ class SettingScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PrivacyPolicyScreen(),
+                      builder: (context) => const PrivacyPolicyScreen(),
                     ));
               },
               child: ListSettings(
@@ -99,10 +99,10 @@ class ListSettings extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        color: Color.fromARGB(255, 20, 3, 54),
-        shadowColor: Color.fromARGB(255, 255, 255, 255),
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(
+        color: const Color.fromARGB(255, 20, 3, 54),
+        shadowColor: const Color.fromARGB(255, 255, 255, 255),
+        shape: const RoundedRectangleBorder(
+          side: BorderSide(
             color: Colors.white,
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:bebop_music/controller/provider/all_song_provider.dart';
+import 'package:bebop_music/controller/provider/search_provider.dart';
 import 'package:bebop_music/db/model/bebop_model.dart';
 import 'package:bebop_music/controller/provider/provider.dart';
 import 'package:bebop_music/screens/splash_screen.dart';
@@ -34,6 +35,7 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => SongModelProvider()),
         ChangeNotifierProvider(create: (context) => AllsongsProvider()),
+        ChangeNotifierProvider(create: (context) => SearchScreenProvider()),
       ],
       child: const MyApp(),
     ),

@@ -358,12 +358,12 @@ class _PlayerScreenState extends State<PlayerScreen> {
         context: context,
         builder: (_) {
           return AlertDialog(
-            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
             title: const Text(
               "Select your playlist!",
               textAlign: TextAlign.center,
               style: TextStyle(
-                  color: const Color.fromARGB(255, 51, 2, 114),
+                  color: Color.fromARGB(255, 51, 2, 114),
                   fontFamily: 'poppins',
                   fontWeight: FontWeight.bold),
             ),

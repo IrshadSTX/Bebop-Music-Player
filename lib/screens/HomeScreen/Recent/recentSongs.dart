@@ -39,7 +39,7 @@ class _RecentlyPlayedState extends State<RecentlyPlayed> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 57, 4, 97),
-        title: Text('Recent Songs'),
+        title: const Text('Recent Songs'),
       ),
       body: Container(
         width: double.infinity,
@@ -153,7 +153,7 @@ class _RecentlyPlayedState extends State<RecentlyPlayed> {
                             ),
                           );
                         }),
-                        separatorBuilder: (context, index) => Divider(
+                        separatorBuilder: (context, index) => const Divider(
                           height: 5,
                         ),
                         itemCount: recentSong.length,

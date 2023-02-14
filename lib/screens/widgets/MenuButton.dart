@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:bebop_music/db/model/bebop_model.dart';
 import 'package:bebop_music/screens/HomeScreen/Playlist/playlistScreen.dart';
 import 'package:bebop_music/screens/homescreen.dart';
@@ -12,7 +13,9 @@ class FavoriteMenuButton extends StatefulWidget {
   const FavoriteMenuButton(
       {super.key, required this.songFavorite, this.findex});
   final SongModel songFavorite;
+  // ignore: prefer_typing_uninitialized_variables
   final findex;
+  @override
   State<FavoriteMenuButton> createState() => _FavoriteMenuButtonState();
 }
 
@@ -73,7 +76,7 @@ class _FavoriteMenuButtonState extends State<FavoriteMenuButton> {
               showPlaylistdialog(context);
             }
           },
-          color: Color.fromARGB(255, 37, 5, 92),
+          color: const Color.fromARGB(255, 37, 5, 92),
           elevation: 2,
         );
       },
@@ -86,7 +89,7 @@ class _FavoriteMenuButtonState extends State<FavoriteMenuButton> {
         builder: (_) {
           return AlertDialog(
             backgroundColor: Colors.white,
-            title: Text(
+            title: const Text(
               textAlign: TextAlign.center,
               "Select your playlist!",
               style: TextStyle(
@@ -122,7 +125,7 @@ class _FavoriteMenuButtonState extends State<FavoriteMenuButton> {
                               final data = musicList.values.toList()[index];
 
                               return Card(
-                                color: Color.fromARGB(255, 51, 2, 114),
+                                color: const Color.fromARGB(255, 51, 2, 114),
                                 shadowColor: Colors.purpleAccent,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
@@ -131,16 +134,16 @@ class _FavoriteMenuButtonState extends State<FavoriteMenuButton> {
                                 child: ListTile(
                                   title: Text(
                                     data.name,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'poppins'),
                                   ),
                                   trailing: isAddedToPlaylist
-                                      ? Icon(
+                                      ? const Icon(
                                           Icons.playlist_add_check,
                                           color: Colors.white,
                                         )
-                                      : Icon(
+                                      : const Icon(
                                           Icons.playlist_add,
                                           color: Colors.white,
                                         ),

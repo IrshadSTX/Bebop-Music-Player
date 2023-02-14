@@ -23,7 +23,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                 const snackBar = SnackBar(
                   content: Text('Removed From Favorite'),
                   duration: Duration(seconds: 1),
-                  backgroundColor: const Color.fromARGB(255, 20, 5, 46),
+                  backgroundColor: Color.fromARGB(255, 20, 5, 46),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               } else {
@@ -31,7 +31,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                 const snackBar = SnackBar(
                   content: Text('Song Added to Favorite'),
                   duration: Duration(seconds: 1),
-                  backgroundColor: const Color.fromARGB(255, 20, 5, 46),
+                  backgroundColor: Color.fromARGB(255, 20, 5, 46),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }

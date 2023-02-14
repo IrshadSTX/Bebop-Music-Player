@@ -40,7 +40,7 @@ dependencies:
   permission_handler: ^10.2.0
   just_audio: ^0.9.30
   just_audio_background: ^0.0.1-beta.8
-  provider: ^6.0.5
+  provider: 
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   text_scroll: ^0.1.1

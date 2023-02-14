@@ -50,7 +50,7 @@ class _PlaylistSingleState extends State<PlaylistSingle> {
           ),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Expanded(
@@ -84,8 +84,8 @@ class _PlaylistSingleState extends State<PlaylistSingle> {
                                           color: const Color.fromARGB(
                                               255, 18, 2, 61),
                                           shadowColor: Colors.purpleAccent,
-                                          shape: RoundedRectangleBorder(
-                                              side: const BorderSide(
+                                          shape: const RoundedRectangleBorder(
+                                              side: BorderSide(
                                                   color: Color.fromARGB(
                                                       255, 132, 0, 255))),
                                           child: ListTile(

@@ -41,7 +41,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
               },
             ),
             appBar: AppBar(
-              title: Text('Playlists'),
+              title: const Text('Playlists'),
               centerTitle: true,
               backgroundColor: const Color.fromARGB(255, 57, 4, 97),
             ),
@@ -82,8 +82,8 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                                       color:
                                           const Color.fromARGB(255, 18, 2, 61),
                                       shadowColor: Colors.purpleAccent,
-                                      shape: RoundedRectangleBorder(
-                                        side: const BorderSide(
+                                      shape: const RoundedRectangleBorder(
+                                        side: BorderSide(
                                           color:
                                               Color.fromARGB(255, 132, 0, 255),
                                         ),
@@ -102,7 +102,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
-                                          child: Container(
+                                          child: SizedBox(
                                             height: 80,
                                             child: Center(
                                               child: Row(
@@ -125,16 +125,16 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                                                         fontFamily: 'poppins'),
                                                   ),
                                                   PopupMenuButton(
-                                                    icon: Icon(
+                                                    icon: const Icon(
                                                       Icons.more_vert,
                                                       color: Colors.white,
                                                     ),
                                                     itemBuilder: (context) => [
-                                                      PopupMenuItem(
+                                                      const PopupMenuItem(
                                                         value: 1,
                                                         child: Text('Edit'),
                                                       ),
-                                                      PopupMenuItem(
+                                                      const PopupMenuItem(
                                                         value: 2,
                                                         child: Text('delete'),
                                                       )
@@ -180,7 +180,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
       builder: (ctx) => SimpleDialog(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),
-        backgroundColor: Color.fromARGB(255, 52, 6, 105),
+        backgroundColor: const Color.fromARGB(255, 52, 6, 105),
         children: [
           SimpleDialogOption(
             child: Text(
@@ -203,8 +203,8 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                 controller: nameController,
                 maxLength: 15,
                 decoration: InputDecoration(
-                    counterStyle:
-                        TextStyle(color: Colors.white, fontFamily: 'poppins'),
+                    counterStyle: const TextStyle(
+                        color: Colors.white, fontFamily: 'poppins'),
                     fillColor: Colors.white.withOpacity(0.7),
                     filled: true,
                     border: OutlineInputBorder(
@@ -282,7 +282,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Color.fromARGB(255, 52, 6, 105),
+          backgroundColor: const Color.fromARGB(255, 52, 6, 105),
           title: const Text(
             'Delete Playlist',
             style: TextStyle(color: Colors.white, fontFamily: 'poppins'),
@@ -328,7 +328,7 @@ Future newplaylist(BuildContext context, formKey) {
     context: context,
     builder: (ctx) => SimpleDialog(
       shape: const RoundedRectangleBorder(),
-      backgroundColor: Color.fromARGB(255, 132, 0, 255),
+      backgroundColor: const Color.fromARGB(255, 132, 0, 255),
       children: [
         const SimpleDialogOption(
           child: Text(
@@ -351,11 +351,11 @@ Future newplaylist(BuildContext context, formKey) {
               controller: nameController,
               maxLength: 15,
               decoration: InputDecoration(
-                  counterStyle: TextStyle(
+                  counterStyle: const TextStyle(
                       color: Color.fromARGB(255, 255, 255, 255),
                       fontFamily: 'poppins'),
                   fillColor:
-                      Color.fromARGB(255, 255, 255, 255).withOpacity(0.7),
+                      const Color.fromARGB(255, 255, 255, 255).withOpacity(0.7),
                   filled: true,
                   border: OutlineInputBorder(
                       borderSide: BorderSide.none,

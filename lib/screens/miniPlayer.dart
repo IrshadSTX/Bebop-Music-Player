@@ -1,4 +1,3 @@
-import 'package:bebop_music/controller/getRecent_Controller.dart';
 import 'package:flutter/material.dart';
 import 'package:text_scroll/text_scroll.dart';
 
@@ -51,7 +50,7 @@ class _MiniPlayerState extends State<MiniPlayer> {
           child: Stack(
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                Container(
+                SizedBox(
                   width: 160,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -116,7 +115,7 @@ class _MiniPlayerState extends State<MiniPlayer> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 133, 23, 120),
+                      backgroundColor: const Color.fromARGB(255, 133, 23, 120),
                       shape: const CircleBorder()),
                   onPressed: () async {
                     setState(() {
