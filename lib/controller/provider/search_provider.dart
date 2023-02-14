@@ -1,5 +1,5 @@
 import 'package:bebop_music/controller/get_all_song.dart';
-import 'package:bebop_music/screens/MusicPlayer/musicplayer.dart';
+import 'package:bebop_music/view/MusicPlayer/musicplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -47,7 +47,7 @@ class SearchScreenProvider with ChangeNotifier {
               leading: QueryArtworkWidget(
                 id: foundSongs[index].id,
                 type: ArtworkType.AUDIO,
-                nullArtworkWidget: CircleAvatar(
+                nullArtworkWidget: const CircleAvatar(
                     backgroundColor: Colors.transparent,
                     child: Icon(Icons.music_note)),
               ),

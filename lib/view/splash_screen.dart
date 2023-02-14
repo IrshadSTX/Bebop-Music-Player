@@ -1,4 +1,4 @@
-import 'package:bebop_music/screens/homescreen.dart';
+import 'package:bebop_music/view/homescreen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {

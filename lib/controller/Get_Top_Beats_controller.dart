@@ -1,4 +1,4 @@
-import 'package:bebop_music/screens/homescreen.dart';
+import 'package:bebop_music/view/homescreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:on_audio_query/on_audio_query.dart';

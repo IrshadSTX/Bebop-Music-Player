@@ -1,5 +1,5 @@
 import 'package:bebop_music/db/favourite_db.dart';
-import 'package:bebop_music/screens/MusicPlayer/musicplayer.dart';
+import 'package:bebop_music/view/MusicPlayer/musicplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 

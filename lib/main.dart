@@ -2,7 +2,7 @@ import 'package:bebop_music/controller/provider/all_song_provider.dart';
 import 'package:bebop_music/controller/provider/search_provider.dart';
 import 'package:bebop_music/db/model/bebop_model.dart';
 import 'package:bebop_music/controller/provider/provider.dart';
-import 'package:bebop_music/screens/splash_screen.dart';
+import 'package:bebop_music/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';

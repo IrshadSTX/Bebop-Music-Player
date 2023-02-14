@@ -1,18 +1,18 @@
 import 'package:bebop_music/controller/Get_Top_Beats_controller.dart';
 import 'package:bebop_music/controller/get_all_song.dart';
 import 'package:bebop_music/controller/provider/all_song_provider.dart';
-import 'package:bebop_music/screens/HomeScreen/drawer_screen.dart';
+import 'package:bebop_music/view/HomeScreen/drawer_screen.dart';
 
-import 'package:bebop_music/screens/miniPlayer.dart';
+import 'package:bebop_music/view/miniPlayer.dart';
 
 import 'package:bebop_music/controller/provider/provider.dart';
 
-import 'package:bebop_music/screens/searchScreen.dart';
-import 'package:bebop_music/screens/widgets/MenuButton.dart';
-import 'package:bebop_music/screens/widgets/libraries.dart';
+import 'package:bebop_music/view/searchScreen.dart';
+import 'package:bebop_music/view/widgets/MenuButton.dart';
+import 'package:bebop_music/view/widgets/libraries.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
-import 'package:bebop_music/screens/MusicPlayer/musicplayer.dart';
+import 'package:bebop_music/view/MusicPlayer/musicplayer.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +25,7 @@ List<SongModel> startSong = [];
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  bool isFavourite = false;
+  final bool isFavourite = false;
 
   playSong(String? uri) {
     try {
@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
 
   final _audioQuery = OnAudioQuery();
   final _audioPlayer = AudioPlayer();
-  List<SongModel> allSongs = [];
+  final List<SongModel> allSongs = [];
 
   @override
   Widget build(BuildContext context) {

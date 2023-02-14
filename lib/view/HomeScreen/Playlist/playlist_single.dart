@@ -1,5 +1,5 @@
 import 'package:bebop_music/db/model/bebop_model.dart';
-import 'package:bebop_music/screens/HomeScreen/Playlist/playlist_add_songs.dart';
+import 'package:bebop_music/view/HomeScreen/Playlist/playlist_add_songs.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:on_audio_query/on_audio_query.dart';

@@ -1,7 +1,7 @@
 import 'package:bebop_music/controller/Get_Top_Beats_controller.dart';
 import 'package:bebop_music/controller/get_all_song.dart';
-import 'package:bebop_music/screens/widgets/MenuButton.dart';
-import 'package:bebop_music/screens/MusicPlayer/musicplayer.dart';
+import 'package:bebop_music/view/widgets/MenuButton.dart';
+import 'package:bebop_music/view/MusicPlayer/musicplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 

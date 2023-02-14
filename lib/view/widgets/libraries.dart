@@ -1,6 +1,6 @@
-import 'package:bebop_music/screens/HomeScreen/Playlist/playlistScreen.dart';
-import 'package:bebop_music/screens/HomeScreen/TopBeats/top_beats.dart';
-import 'package:bebop_music/screens/HomeScreen/favorite/favouriteScreen.dart';
+import 'package:bebop_music/view/HomeScreen/Playlist/playlistScreen.dart';
+import 'package:bebop_music/view/HomeScreen/TopBeats/top_beats.dart';
+import 'package:bebop_music/view/HomeScreen/favorite/favouriteScreen.dart';
 import 'package:flutter/material.dart';
 
 import '../HomeScreen/Recent/recentSongs.dart';
