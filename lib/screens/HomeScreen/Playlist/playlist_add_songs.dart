@@ -128,7 +128,7 @@ class _SongListPageState extends State<SongListAddPage> {
                                                               .notifyListeners();
                                                         });
                                                       },
-                                                      icon: Icon(
+                                                      icon: const Icon(
                                                         Icons.add,
                                                         color: Colors.white,
                                                       ))

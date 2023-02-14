@@ -1,108 +1,99 @@
 import 'package:bebop_music/controller/get_all_song.dart';
 import 'package:bebop_music/screens/MusicPlayer/musicplayer.dart';
-import 'package:bebop_music/screens/homescreen.dart';
-import 'package:bebop_music/screens/widgets/MenuButton.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
 import 'package:on_audio_query/on_audio_query.dart';
 
 class SearchScreenProvider with ChangeNotifier {
-  List<SongModel> allsongs = [];
+  late List<SongModel> allSongs;
   List<SongModel> foundSongs = [];
-
   final OnAudioQuery audioQueryObject = OnAudioQuery();
+  final AudioPlayer searchPageAudioPlayer = AudioPlayer();
 
-  void songsLoading() async {
-    allsongs = await audioQueryObject.querySongs(
+  void fetchingAllSongsAndAssigningToFoundSongs() async {
+    allSongs = await audioQueryObject.querySongs(
       sortType: null,
       orderType: OrderType.ASC_OR_SMALLER,
       uriType: UriType.EXTERNAL,
       ignoreCase: null,
     );
-    foundSongs = allsongs;
+    foundSongs = allSongs;
     notifyListeners();
   }
 
-  void updateList(String enteredText) {
+  void runFilter(String enteredKeyword) {
     List<SongModel> results = [];
-    if (enteredText.isEmpty) {
-      results = allsongs;
+    if (enteredKeyword.isEmpty) {
+      results = allSongs;
     }
-    if (enteredText.isNotEmpty) {
-      results = allsongs
-          .where((element) => element.displayNameWOExt
-              .toLowerCase()
-              .contains(enteredText.toLowerCase().trimRight()))
-          .toList();
+    if (enteredKeyword.isNotEmpty) {
+      results = allSongs.where((element) {
+        return element.displayNameWOExt
+            .toLowerCase()
+            .contains(enteredKeyword.toLowerCase().trim());
+      }).toList();
     }
-
     foundSongs = results;
     notifyListeners();
   }
 
   Widget? showListView() {
-    foundSongs.isNotEmpty
-        ? Expanded(
-            child: ListView.builder(
-              itemBuilder: ((context, index) {
-                return Card(
-                  color: Colors.black,
-                  shadowColor: Colors.purpleAccent,
-                  shape: const RoundedRectangleBorder(
-                      side: BorderSide(
-                    color: Color.fromARGB(255, 153, 112, 210),
-                  )),
-                  child: ListTile(
-                    iconColor: Colors.white,
-                    selectedColor: Colors.purpleAccent,
-                    leading: QueryArtworkWidget(
-                      id: foundSongs[index].id,
-                      type: ArtworkType.AUDIO,
-                      nullArtworkWidget: const Icon(Icons.music_note),
-                    ),
-                    title: Text(
-                      foundSongs[index].displayNameWOExt,
-                      style: const TextStyle(
-                          overflow: TextOverflow.ellipsis,
-                          fontFamily: 'poppins',
-                          color: Colors.white),
-                    ),
-                    subtitle: Text(
-                      foundSongs[index].artist.toString() == "<unknown>"
-                          ? "Unknown Artist"
-                          : foundSongs[index].artist.toString(),
-                      style: const TextStyle(
-                          fontFamily: 'poppins',
-                          fontSize: 12,
-                          color: Colors.blueGrey),
-                    ),
-                    trailing:
-                        FavoriteMenuButton(songFavorite: startSong[index]),
-                    onTap: () {
-                      GetAllSongController.audioPlayer.setAudioSource(
-                          GetAllSongController.createSongList(foundSongs),
-                          initialIndex: index);
-                      GetAllSongController.audioPlayer.play();
-
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return PlayerScreen(
-                          songModelList: foundSongs,
-                        );
-                      }));
-                    },
+    if (foundSongs.isNotEmpty) {
+      return ListView.separated(
+          padding: const EdgeInsets.all(5),
+          itemBuilder: ((context, index) {
+            return ListTile(
+              leading: QueryArtworkWidget(
+                id: foundSongs[index].id,
+                type: ArtworkType.AUDIO,
+                nullArtworkWidget: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    child: Icon(Icons.music_note)),
+              ),
+              title: Text(
+                foundSongs[index].title,
+                maxLines: 1,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'poppins',
+                    fontSize: 14,
+                    overflow: TextOverflow.clip),
+              ),
+              subtitle: Text(
+                maxLines: 1,
+                foundSongs[index].artist.toString() == '<unknown>'
+                    ? 'UNKNOWN ARTIST'
+                    : foundSongs[index].artist.toString(),
+                style: const TextStyle(
+                    fontFamily: 'poppins', fontSize: 10, color: Colors.grey),
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
+              onTap: () {
+                GetAllSongController.audioPlayer.setAudioSource(
+                    GetAllSongController.createSongList(foundSongs),
+                    initialIndex: index);
+                GetAllSongController.audioPlayer.play();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) {
+                      return PlayerScreen(
+                        songModelList: foundSongs,
+                      );
+                    }),
                   ),
                 );
-              }),
-              itemCount: foundSongs.length,
-            ),
-          )
-        : const Center(
-            child: Text(
-              'No search result found',
-              style: TextStyle(color: Colors.white),
-            ),
-          );
-    return null;
+              },
+            );
+          }),
+          separatorBuilder: (context, index) => SizedBox(
+                height: MediaQuery.of(context).size.height * 0.01,
+              ),
+          itemCount: foundSongs.length);
+    } else {
+      return null;
+    }
   }
 }
