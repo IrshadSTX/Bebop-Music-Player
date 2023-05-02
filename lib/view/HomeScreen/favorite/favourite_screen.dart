@@ -47,12 +47,7 @@ class FavouriteScreen extends StatelessWidget {
                             builder: (BuildContext ctx,
                                 List<SongModel> favoriteData, Widget? child) {
                               if (favoriteData.isEmpty) {
-                                return const Center(
-                                  child: Text(
-                                    'No Favourite Songs',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                );
+                                return Center(child: Text('No Songs found!'));
                               } else {
                                 return Padding(
                                   padding: const EdgeInsets.all(8.0),

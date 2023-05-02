@@ -38,9 +38,10 @@ class _SplashScreenState extends State<SplashScreen> {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: const Center(
+        child: Center(
           child: Image(
-            image: AssetImage('assets/images/bebop.png'),
+            width: MediaQuery.of(context).size.width * 0.7,
+            image: const AssetImage('assets/images/bebop.png'),
           ),
         ),
       ),
