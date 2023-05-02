@@ -34,7 +34,6 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => SongModelProvider()),
-        ChangeNotifierProvider(create: (context) => AllsongsProvider()),
         ChangeNotifierProvider(create: (context) => SearchScreenProvider()),
       ],
       child: const MyApp(),

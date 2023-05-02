@@ -10,11 +10,13 @@ import 'package:bebop_music/controller/provider/provider.dart';
 import 'package:bebop_music/view/searchScreen.dart';
 import 'package:bebop_music/view/widgets/menubutton.dart';
 import 'package:bebop_music/view/widgets/libraries.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
 import 'package:bebop_music/view/MusicPlayer/musicplayer.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:on_audio_query/on_audio_query.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 import '../controller/getRecent_Controller.dart';
@@ -22,8 +24,19 @@ import '../db/favourite_db.dart';
 
 List<SongModel> startSong = [];
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    requestPermission();
+  }
 
   final bool isFavourite = false;
 
@@ -36,16 +49,28 @@ class HomeScreen extends StatelessWidget {
     }
   }
 
+  void requestPermission() async {
+    if (!kIsWeb) {
+      bool permissionStatus = await _audioQuery.permissionsStatus();
+      if (!permissionStatus) {
+        await _audioQuery.permissionsRequest();
+      }
+      setState(() {});
+    }
+    Permission.storage.request;
+  }
+
   final _audioQuery = OnAudioQuery();
+
   final _audioPlayer = AudioPlayer();
+
   final List<SongModel> allSongs = [];
 
   @override
   Widget build(BuildContext context) {
-    log("First login");
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<AllsongsProvider>(context, listen: false).requestPermission();
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //   Provider.of<AllsongsProvider>(context, listen: false).requestPermission();
+    // });
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 57, 4, 97),
@@ -138,7 +163,11 @@ class HomeScreen extends StatelessWidget {
                           }
 
                           if (item.data!.isEmpty) {
-                            return const Center(child: Text("No Songs found"));
+                            return const Center(
+                                child: Text(
+                              "No Songs found",
+                              style: TextStyle(color: Colors.white),
+                            ));
                           }
                           startSong = item.data!;
                           if (!FavoriteDb.isInitialized) {
