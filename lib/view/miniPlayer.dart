@@ -45,13 +45,13 @@ class _MiniPlayerState extends State<MiniPlayer> {
                 top: BorderSide(color: Colors.cyan, width: 2),
               ),
               color: Color.fromARGB(255, 2, 3, 61)),
-          height: 100,
-          width: MediaQuery.of(context).size.width * 1.0,
+          height: MediaQuery.of(context).size.height * 0.10,
+          width: MediaQuery.of(context).size.width,
           child: Stack(
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                 SizedBox(
-                  width: 160,
+                  width: MediaQuery.of(context).size.width * 0.5,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -94,58 +94,58 @@ class HomeScreen extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    ' Libraries',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Poppins',
-                      fontSize: 20,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const LibraryHome(),
-                  const Text(
-                    ' Music Lists',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Poppins',
-                      fontSize: 20,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  FutureBuilder<List<SongModel>>(
-                    future: _audioQuery.querySongs(
-                      sortType: null,
-                      orderType: OrderType.ASC_OR_SMALLER,
-                      uriType: UriType.EXTERNAL,
-                      ignoreCase: true,
-                    ),
-                    builder: (context, item) {
-                      if (item.data == null) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        ' Libraries',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                          fontSize: 20,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const LibraryHome(),
+                      const Text(
+                        ' Music Lists',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                          fontSize: 20,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      FutureBuilder<List<SongModel>>(
+                        future: _audioQuery.querySongs(
+                          sortType: null,
+                          orderType: OrderType.ASC_OR_SMALLER,
+                          uriType: UriType.EXTERNAL,
+                          ignoreCase: true,
+                        ),
+                        builder: (context, item) {
+                          if (item.data == null) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
 
-                      if (item.data!.isEmpty) {
-                        return const Center(child: Text("No Songs found"));
-                      }
-                      startSong = item.data!;
-                      if (!FavoriteDb.isInitialized) {
-                        FavoriteDb.initialize(item.data!);
-                      }
-                      GetAllSongController.songscopy = item.data!;
-                      return Stack(
-                        children: [
-                          SizedBox(
+                          if (item.data!.isEmpty) {
+                            return const Center(child: Text("No Songs found"));
+                          }
+                          startSong = item.data!;
+                          if (!FavoriteDb.isInitialized) {
+                            FavoriteDb.initialize(item.data!);
+                          }
+                          GetAllSongController.songscopy = item.data!;
+                          return SizedBox(
                             child: ListView.separated(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
@@ -215,37 +215,36 @@ class HomeScreen extends StatelessWidget {
                               ),
                               itemCount: item.data!.length,
                             ),
-                          ),
-                          ValueListenableBuilder(
-                              valueListenable: FavoriteDb.favoriteSongs,
-                              builder: (BuildContext context,
-                                  List<SongModel> music, Widget? child) {
-                                return Positioned(
-                                  bottom: 0,
-                                  left: 0,
-                                  right: 0,
-                                  child: Column(
-                                    children: [
-                                      if (GetAllSongController
-                                              .audioPlayer.currentIndex !=
-                                          null)
-                                        Column(
-                                          children: const [
-                                            MiniPlayer(),
-                                          ],
-                                        )
-                                      else
-                                        const SizedBox(),
-                                    ],
-                                  ),
-                                );
-                              }),
-                        ],
-                      );
-                    },
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                ValueListenableBuilder(
+                    valueListenable: FavoriteDb.favoriteSongs,
+                    builder: (BuildContext context, List<SongModel> music,
+                        Widget? child) {
+                      return Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Column(
+                          children: [
+                            if (GetAllSongController.audioPlayer.currentIndex !=
+                                null)
+                              Column(
+                                children: const [
+                                  MiniPlayer(),
+                                ],
+                              )
+                            else
+                              const SizedBox(),
+                          ],
+                        ),
+                      );
+                    }),
+              ],
             ),
           ),
         ),
