@@ -1,14 +1,14 @@
 import 'package:bebop_music/controller/get_top_beats.dart';
 import 'package:bebop_music/controller/get_all_song.dart';
-import 'package:bebop_music/controller/provider/all_song_provider.dart';
+
 import 'package:bebop_music/view/HomeScreen/drawer_screen.dart';
 
-import 'package:bebop_music/view/miniPlayer.dart';
+import 'package:bebop_music/view/mini_player.dart';
 
 import 'package:bebop_music/controller/provider/provider.dart';
 
-import 'package:bebop_music/view/searchScreen.dart';
-import 'package:bebop_music/view/widgets/menubutton.dart';
+import 'package:bebop_music/view/search_screen.dart';
+import 'package:bebop_music/view/widgets/menu_button.dart';
 import 'package:bebop_music/view/widgets/libraries.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +19,13 @@ import 'package:on_audio_query/on_audio_query.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
-import '../controller/getRecent_Controller.dart';
+import '../controller/get_recent_controller.dart';
 import '../db/favourite_db.dart';
 
 List<SongModel> startSong = [];
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

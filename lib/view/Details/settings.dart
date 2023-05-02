@@ -3,7 +3,7 @@ import 'package:bebop_music/view/Details/termsnconditions.dart';
 import 'package:bebop_music/view/widgets/text_all_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'About.dart';
+import 'about.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});

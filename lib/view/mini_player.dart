@@ -16,6 +16,7 @@ class MiniPlayer extends StatefulWidget {
 bool isPlaying = false;
 
 class _MiniPlayerState extends State<MiniPlayer> {
+  @override
   void initState() {
     GetAllSongController.audioPlayer.currentIndexStream.listen((index) {
       if (index != null && mounted) {

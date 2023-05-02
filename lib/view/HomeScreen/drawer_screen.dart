@@ -1,9 +1,9 @@
 import 'package:bebop_music/view/Details/settings.dart';
+import 'package:bebop_music/view/HomeScreen/Playlist/playlist_screen.dart';
 import 'package:bebop_music/view/HomeScreen/TopBeats/top_beats.dart';
 import 'package:flutter/material.dart';
 
-import 'Playlist/playlistScreen.dart';
-import 'favorite/favouriteScreen.dart';
+import 'favorite/favourite_screen.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({super.key});

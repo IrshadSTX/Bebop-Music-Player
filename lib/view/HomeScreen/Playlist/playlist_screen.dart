@@ -141,12 +141,12 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                                                     ],
                                                     onSelected: (value) {
                                                       if (value == 1) {
-                                                        EditPlaylistName(
+                                                        editPlaylistName(
                                                             context,
                                                             data,
                                                             index);
                                                       } else if (value == 2) {
-                                                        DeletePlaylist(context,
+                                                        deletePlaylist(context,
                                                             musicList, index);
                                                       }
                                                     },
@@ -173,7 +173,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
         });
   }
 
-  Future<dynamic> EditPlaylistName(
+  Future<dynamic> editPlaylistName(
       BuildContext context, BebopModel data, int index) {
     return showDialog(
       context: context,
@@ -276,7 +276,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
     );
   }
 
-  Future<dynamic> DeletePlaylist(
+  Future<dynamic> deletePlaylist(
       BuildContext context, Box<BebopModel> musicList, int index) {
     return showDialog(
       context: context,

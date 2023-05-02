@@ -2,14 +2,14 @@ import 'package:bebop_music/controller/get_all_song.dart';
 import 'package:bebop_music/db/model/bebop_model.dart';
 
 import 'package:bebop_music/view/Details/settings.dart';
-import 'package:bebop_music/view/HomeScreen/Playlist/playlistScreen.dart';
-import 'package:bebop_music/view/HomeScreen/favorite/FavButtonPlayerScreen.dart';
+import 'package:bebop_music/view/HomeScreen/Playlist/playlist_screen.dart';
+import 'package:bebop_music/view/HomeScreen/favorite/fav_button_player.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import '../../db/favourite_db.dart';
-import '../widgets/artwork.dart';
+import '../widgets/art_work.dart';
 
 class PlayerScreen extends StatefulWidget {
   const PlayerScreen({Key? key, required this.songModelList}) : super(key: key);

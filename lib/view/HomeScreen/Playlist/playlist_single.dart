@@ -5,7 +5,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controller/getRecent_Controller.dart';
+import '../../../controller/get_recent_controller.dart';
 import '../../../controller/get_all_song.dart';
 
 import '../../MusicPlayer/musicplayer.dart';

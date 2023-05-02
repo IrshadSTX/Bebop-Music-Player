@@ -1,6 +1,5 @@
-// ignore: file_names
 import 'package:bebop_music/db/model/bebop_model.dart';
-import 'package:bebop_music/view/HomeScreen/Playlist/playlistScreen.dart';
+
 import 'package:bebop_music/view/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -8,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 import '../../db/favourite_db.dart';
+import '../HomeScreen/Playlist/playlist_screen.dart';
 
 class FavoriteMenuButton extends StatefulWidget {
   const FavoriteMenuButton(

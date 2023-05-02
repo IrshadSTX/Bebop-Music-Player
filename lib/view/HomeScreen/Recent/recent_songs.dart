@@ -1,10 +1,10 @@
 import 'package:bebop_music/controller/get_all_song.dart';
 import 'package:bebop_music/view/MusicPlayer/musicplayer.dart';
-import 'package:bebop_music/view/widgets/menubutton.dart';
+import 'package:bebop_music/view/widgets/menu_button.dart';
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
-import '../../../controller/getRecent_Controller.dart';
+import '../../../controller/get_recent_controller.dart';
 import '../../../db/favourite_db.dart';
 
 class RecentlyPlayed extends StatefulWidget {

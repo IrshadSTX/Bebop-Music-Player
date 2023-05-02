@@ -38,7 +38,7 @@ class FavouriteScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Expanded(

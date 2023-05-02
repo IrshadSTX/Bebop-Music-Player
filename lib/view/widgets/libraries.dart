@@ -1,9 +1,9 @@
-import 'package:bebop_music/view/HomeScreen/Playlist/playlistScreen.dart';
+import 'package:bebop_music/view/HomeScreen/Playlist/playlist_screen.dart';
 import 'package:bebop_music/view/HomeScreen/TopBeats/top_beats.dart';
-import 'package:bebop_music/view/HomeScreen/favorite/favouriteScreen.dart';
+import 'package:bebop_music/view/HomeScreen/favorite/favourite_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../HomeScreen/Recent/recentSongs.dart';
+import '../HomeScreen/Recent/recent_songs.dart';
 
 class LibraryHome extends StatelessWidget {
   const LibraryHome({super.key});

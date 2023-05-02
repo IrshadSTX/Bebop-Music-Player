@@ -3,7 +3,7 @@ import 'package:on_audio_query/on_audio_query.dart';
 import '../../../db/favourite_db.dart';
 
 class FavoriteButton extends StatefulWidget {
-  FavoriteButton({super.key, required this.songFavorite});
+  const FavoriteButton({super.key, required this.songFavorite});
   final SongModel songFavorite;
   @override
   State<FavoriteButton> createState() => _FavoriteButtonState();
