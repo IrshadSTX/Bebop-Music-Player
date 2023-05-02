@@ -9,7 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import '../../db/favourite_db.dart';
-import '../widgets/artWork.dart';
+import '../widgets/artwork.dart';
 
 class PlayerScreen extends StatefulWidget {
   const PlayerScreen({Key? key, required this.songModelList}) : super(key: key);

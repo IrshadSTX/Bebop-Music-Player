@@ -26,13 +26,21 @@ class GetTopBeatsController {
     final topBeatsDb = await Hive.openBox('topBeatsNotifier');
     final topBeatsSongItems = topBeatsDb.values.toList();
     topBeatsNotifier.value.clear();
-    topBeats.clear();
+    int count = 0;
     for (var i = 0; i < topBeatsSongItems.length; i++) {
-      for (var j = 0; j < startSong.length; j++) {
-        if (topBeatsSongItems[i] == startSong[j].id) {
-          topBeatsNotifier.value.add(startSong[j]);
-          topBeats.add(startSong[j]);
+      for (var k = 0; k < topBeatsSongItems.length; k++) {
+        if (topBeatsSongItems[i] == topBeatsSongItems[k]) {
+          count++;
         }
+      }
+      if (count > 4) {
+        for (var j = 0; j < startSong.length; j++) {
+          if (topBeatsSongItems[i] == startSong[j].id) {
+            topBeatsNotifier.value.add(startSong[j]);
+            topBeats.add(startSong[j]);
+          }
+        }
+        count = 0;
       }
     }
     return topBeats;

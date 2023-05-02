@@ -60,6 +60,7 @@ class _FavoriteMenuButtonState extends State<FavoriteMenuButton> {
               },
             ),
             const PopupMenuItem(
+              value: 2,
               child: Text(
                 'Add to playlists',
                 style: TextStyle(
@@ -67,7 +68,6 @@ class _FavoriteMenuButtonState extends State<FavoriteMenuButton> {
                     fontFamily: 'Poppins',
                     fontSize: 13),
               ),
-              value: 2,
               // value: PlaylistScreen(),
             )
           ],

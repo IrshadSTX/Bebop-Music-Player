@@ -1,4 +1,4 @@
-import 'package:bebop_music/controller/Get_Top_Beats_controller.dart';
+import 'package:bebop_music/controller/get_top_beats.dart';
 import 'package:bebop_music/controller/get_all_song.dart';
 import 'package:bebop_music/controller/provider/all_song_provider.dart';
 import 'package:bebop_music/view/HomeScreen/drawer_screen.dart';
@@ -8,7 +8,7 @@ import 'package:bebop_music/view/miniPlayer.dart';
 import 'package:bebop_music/controller/provider/provider.dart';
 
 import 'package:bebop_music/view/searchScreen.dart';
-import 'package:bebop_music/view/widgets/MenuButton.dart';
+import 'package:bebop_music/view/widgets/menubutton.dart';
 import 'package:bebop_music/view/widgets/libraries.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
@@ -94,122 +94,127 @@ class HomeScreen extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  ' Libraries',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Poppins',
-                    fontSize: 20,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    ' Libraries',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const LibraryHome(),
-                const Text(
-                  ' Music Lists',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Poppins',
-                    fontSize: 20,
+                  const SizedBox(
+                    height: 10,
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                FutureBuilder<List<SongModel>>(
-                  future: _audioQuery.querySongs(
-                    sortType: null,
-                    orderType: OrderType.ASC_OR_SMALLER,
-                    uriType: UriType.EXTERNAL,
-                    ignoreCase: true,
+                  const LibraryHome(),
+                  const Text(
+                    ' Music Lists',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                    ),
                   ),
-                  builder: (context, item) {
-                    if (item.data == null) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  FutureBuilder<List<SongModel>>(
+                    future: _audioQuery.querySongs(
+                      sortType: null,
+                      orderType: OrderType.ASC_OR_SMALLER,
+                      uriType: UriType.EXTERNAL,
+                      ignoreCase: true,
+                    ),
+                    builder: (context, item) {
+                      if (item.data == null) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
 
-                    if (item.data!.isEmpty) {
-                      return const Center(child: Text("No Songs found"));
-                    }
-                    startSong = item.data!;
-                    if (!FavoriteDb.isInitialized) {
-                      FavoriteDb.initialize(item.data!);
-                    }
-                    GetAllSongController.songscopy = item.data!;
-                    return Expanded(
-                      child: Stack(
+                      if (item.data!.isEmpty) {
+                        return const Center(child: Text("No Songs found"));
+                      }
+                      startSong = item.data!;
+                      if (!FavoriteDb.isInitialized) {
+                        FavoriteDb.initialize(item.data!);
+                      }
+                      GetAllSongController.songscopy = item.data!;
+                      return Stack(
                         children: [
-                          ListView.separated(
-                            itemBuilder: ((context, index) {
-                              allSongs.addAll(item.data!);
-                              return Container(
-                                height: 70,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 2,
-                                    color:
-                                        const Color.fromARGB(255, 81, 21, 88),
+                          SizedBox(
+                            child: ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: ((context, index) {
+                                allSongs.addAll(item.data!);
+                                return Container(
+                                  height: 70,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color:
+                                          const Color.fromARGB(255, 81, 21, 88),
+                                    ),
                                   ),
-                                ),
-                                child: ListTile(
-                                  leading: QueryArtworkWidget(
-                                    id: item.data![index].id,
-                                    type: ArtworkType.AUDIO,
-                                    nullArtworkWidget:
-                                        const Icon(Icons.music_note),
-                                  ),
-                                  title: Text(
-                                    item.data![index].displayNameWOExt,
-                                    style: const TextStyle(
-                                        overflow: TextOverflow.ellipsis,
-                                        color: Colors.white,
-                                        fontSize: 16),
-                                  ),
-                                  iconColor: Colors.white,
-                                  subtitle: Text("${item.data![index].artist}",
+                                  child: ListTile(
+                                    leading: QueryArtworkWidget(
+                                      id: item.data![index].id,
+                                      type: ArtworkType.AUDIO,
+                                      nullArtworkWidget:
+                                          const Icon(Icons.music_note),
+                                    ),
+                                    title: Text(
+                                      item.data![index].displayNameWOExt,
                                       style: const TextStyle(
                                           overflow: TextOverflow.ellipsis,
-                                          color: Colors.blueGrey,
-                                          fontSize: 12)),
-                                  trailing: FavoriteMenuButton(
-                                      songFavorite: startSong[index]),
-                                  onTap: () {
-                                    GetAllSongController.audioPlayer
-                                        .setAudioSource(
-                                            GetAllSongController.createSongList(
-                                                item.data!),
-                                            initialIndex: index);
+                                          color: Colors.white,
+                                          fontSize: 16),
+                                    ),
+                                    iconColor: Colors.white,
+                                    subtitle: Text(
+                                        "${item.data![index].artist}",
+                                        style: const TextStyle(
+                                            overflow: TextOverflow.ellipsis,
+                                            color: Colors.blueGrey,
+                                            fontSize: 12)),
+                                    trailing: FavoriteMenuButton(
+                                        songFavorite: startSong[index]),
+                                    onTap: () {
+                                      GetAllSongController.audioPlayer
+                                          .setAudioSource(
+                                              GetAllSongController
+                                                  .createSongList(item.data!),
+                                              initialIndex: index);
 
-                                    GetRecentSongController.addRecentlyPlayed(
-                                        item.data![index].id);
-                                    GetTopBeatsController.addTopBeats(
-                                        item.data![index].id);
-                                    context
-                                        .read<SongModelProvider>()
-                                        .setId(item.data![index].id);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PlayerScreen(
-                                          songModelList: item.data!,
+                                      GetRecentSongController.addRecentlyPlayed(
+                                          item.data![index].id);
+                                      GetTopBeatsController.addTopBeats(
+                                          item.data![index].id);
+                                      context
+                                          .read<SongModelProvider>()
+                                          .setId(item.data![index].id);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => PlayerScreen(
+                                            songModelList: item.data!,
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
-                            }),
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(
-                              height: 5,
+                                      );
+                                    },
+                                  ),
+                                );
+                              }),
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(
+                                height: 5,
+                              ),
+                              itemCount: item.data!.length,
                             ),
-                            itemCount: item.data!.length,
                           ),
                           ValueListenableBuilder(
                               valueListenable: FavoriteDb.favoriteSongs,
@@ -236,11 +241,11 @@ class HomeScreen extends StatelessWidget {
                                 );
                               }),
                         ],
-                      ),
-                    );
-                  },
-                ),
-              ],
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
