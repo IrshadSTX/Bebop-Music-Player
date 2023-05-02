@@ -78,86 +78,109 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                                   builder: (BuildContext context,
                                       Box<BebopModel> musicList,
                                       Widget? child) {
-                                    return Card(
-                                      color:
-                                          const Color.fromARGB(255, 18, 2, 61),
-                                      shadowColor: Colors.purpleAccent,
-                                      shape: const RoundedRectangleBorder(
-                                        side: BorderSide(
-                                          color:
-                                              Color.fromARGB(255, 132, 0, 255),
-                                        ),
-                                      ),
-                                      child: InkWell(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    PlaylistSingle(
-                                                  playlist: data,
-                                                  findex: index,
-                                                ),
-                                              ));
-                                        },
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: SizedBox(
-                                            height: 80,
-                                            child: Center(
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  const SizedBox(
-                                                    width: 20,
-                                                  ),
-                                                  TextScroll(
-                                                    data.name.toUpperCase(),
-                                                    mode:
-                                                        TextScrollMode.bouncing,
-                                                    style: const TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20,
-                                                        fontFamily: 'poppins'),
-                                                  ),
-                                                  PopupMenuButton(
-                                                    icon: const Icon(
-                                                      Icons.more_vert,
-                                                      color: Colors.white,
-                                                    ),
-                                                    itemBuilder: (context) => [
-                                                      const PopupMenuItem(
-                                                        value: 1,
-                                                        child: Text('Edit'),
-                                                      ),
-                                                      const PopupMenuItem(
-                                                        value: 2,
-                                                        child: Text('delete'),
-                                                      )
-                                                    ],
-                                                    onSelected: (value) {
-                                                      if (value == 1) {
-                                                        editPlaylistName(
-                                                            context,
-                                                            data,
-                                                            index);
-                                                      } else if (value == 2) {
-                                                        deletePlaylist(context,
-                                                            musicList, index);
-                                                      }
-                                                    },
-                                                  )
-                                                ],
+                                    return Hive.box<BebopModel>('playlistDb')
+                                            .isEmpty
+                                        ? Center(
+                                            child: Container(
+                                            height: 100,
+                                            width: 100,
+                                            child: Text(
+                                              'Add your Playlist',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ))
+                                        : Card(
+                                            color: const Color.fromARGB(
+                                                255, 18, 2, 61),
+                                            shadowColor: Colors.purpleAccent,
+                                            shape: const RoundedRectangleBorder(
+                                              side: BorderSide(
+                                                color: Color.fromARGB(
+                                                    255, 132, 0, 255),
                                               ),
                                             ),
-                                          ),
-                                        ),
-                                      ),
-                                    );
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          PlaylistSingle(
+                                                        playlist: data,
+                                                        findex: index,
+                                                      ),
+                                                    ));
+                                              },
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: SizedBox(
+                                                  height: 80,
+                                                  child: Center(
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        const SizedBox(
+                                                          width: 20,
+                                                        ),
+                                                        TextScroll(
+                                                          data.name
+                                                              .toUpperCase(),
+                                                          mode: TextScrollMode
+                                                              .bouncing,
+                                                          style: const TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 20,
+                                                              fontFamily:
+                                                                  'poppins'),
+                                                        ),
+                                                        PopupMenuButton(
+                                                          icon: const Icon(
+                                                            Icons.more_vert,
+                                                            color: Colors.white,
+                                                          ),
+                                                          itemBuilder:
+                                                              (context) => [
+                                                            const PopupMenuItem(
+                                                              value: 1,
+                                                              child:
+                                                                  Text('Edit'),
+                                                            ),
+                                                            const PopupMenuItem(
+                                                              value: 2,
+                                                              child: Text(
+                                                                  'delete'),
+                                                            )
+                                                          ],
+                                                          onSelected: (value) {
+                                                            if (value == 1) {
+                                                              editPlaylistName(
+                                                                  context,
+                                                                  data,
+                                                                  index);
+                                                            } else if (value ==
+                                                                2) {
+                                                              deletePlaylist(
+                                                                  context,
+                                                                  musicList,
+                                                                  index);
+                                                            }
+                                                          },
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
                                   },
                                 );
                               }),

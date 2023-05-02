@@ -67,8 +67,8 @@ class _RecentlyPlayedState extends State<RecentlyPlayed> {
                     padding: EdgeInsets.only(top: 10),
                     child: Center(
                       child: Text(
-                        'No Song In Recents',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        'No Song played recently',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   );
